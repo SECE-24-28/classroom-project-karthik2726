@@ -1,0 +1,109 @@
+{
+  "name": "Karthik B",
+  "title": "AI & Data Science Student | Python Developer",
+  "headline": "Hi — I'm Karthik.B",
+  "summary": "B.Tech AI & DS student at Sri Eshwar College of Engineering | Python & Web Development enthusiast | 810+ coding problems solved | Google Cloud & Generative AI certified.",
+  "about": "I'm a B.Tech student in Artificial Intelligence and Data Science with a strong foundation in Python, web development, and competitive coding. I've completed 810+ problems on Skillrack, 20+ on LeetCode, 50+ on CodeChef, and earned 2400+ Hackos on HackerRank. Currently holding a CGPA of 7.4 (up to 2nd sem). I'm passionate about building practical applications and exploring AI/ML technologies. I'm Google Cloud certified in Introduction to Generative AI and have completed multiple programming certifications.",
+  "contact": {
+    "email": "karthikb2726@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/karthik27b/",
+    "github": "https://github.com/karthik2726"
+  },
+  "skills": [
+    "Python",
+    "Java",
+    "C",
+    "C++",
+    "SQL",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Git",
+    "GitHub",
+    "Visual Studio Code",
+    "Tkinter",
+    "Power BI",
+    "Canva",
+    "Object-Oriented Programming",
+    "File Handling"
+  ],
+  "projects": [
+    {
+      "name": "Restaurant Management System",
+      "description": "Developed a console and GUI-based application to streamline restaurant operations including menu management, order processing, billing, and customer records. Integrated Tkinter for the graphical user interface and HTML for front-end structuring. Implemented features using object-oriented programming and file handling to ensure smooth data flow and user interaction. Top 50 Winner – Internal Smart India Hackathon (SIH).",
+      "link": "#",
+      "github": "#",
+      "tech": "Python, Tkinter, HTML, OOP, File Handling"
+    },
+    {
+      "name": "Smart Tourist Safety Monitoring & Incident Response System",
+      "description": "Developed an AI & geo-fencing–based safety monitoring system for tourists. Implemented real-time alerting, emergency response workflows, and blockchain-based digital ID. Secured a position among the Top 50 teams in the internal college-level Smart India Hackathon (SIH) selection round.",
+      "link": "#",
+      "github": "#",
+      "tech": "Python, Geo-Fencing APIs, Blockchain Concept, AI Models"
+    }
+  ],
+  "learningProjects": [
+    {
+      "name": "Weather Forecast Application",
+      "description": "Weather application with real-time data visualization, location-based forecasts, historical weather trends, and 5-day forecast. Built with open-source weather APIs.",
+      "link": "https://github.com/karthik2726/weather-app",
+      "github": "https://github.com/karthik2726/weather-app",
+      "tech": "React, OpenWeather API, Chart.js"
+    },
+    {
+      "name": "Portfolio Website Generator",
+      "description": "Automated portfolio website builder. Users input their information (resume, projects, experience) and instantly get a beautiful, personalized portfolio site.",
+      "link": "https://github.com/karthik2726/portfolio-generator",
+      "github": "https://github.com/karthik2726/portfolio-generator",
+      "tech": "React, Node.js, Tailwind CSS, JSON"
+    },
+    {
+      "name": "Personal Portfolio Website",
+      "description": "Modern, responsive portfolio website showcasing projects, experience, and skills. Built with HTML, CSS, JavaScript, and Tailwind CSS. Includes Chatbase AI integration.",
+      "link": "https://github.com/karthik2726/portfolio",
+      "github": "https://github.com/karthik2726/portfolio",
+      "tech": "HTML, CSS, JavaScript, Tailwind CSS, Chatbase AI"
+    }
+  ],
+  "experience": [],
+  "education": [
+    {
+      "degree": "B.Tech - Artificial Intelligence and Data Science",
+      "institution": "Sri Eshwar College of Engineering",
+      "year": "2024 - 2028",
+      "details": "CGPA: 7.4 (up to 2nd semester) | Specialization in AI, ML, Web Technologies, and Data Science"
+    },
+    {
+      "degree": "HSC",
+      "institution": "Disha - A Life School (ISC)",
+      "year": "2022 - 2024",
+      "details": "Percentage: 69%"
+    },
+    {
+      "degree": "SSLC",
+      "institution": "Disha - A Life School (ICSE)",
+      "year": "2021 - 2022",
+      "details": "Percentage: 67%"
+    }
+  ]
+  ,
+  "certifications": [
+    "Google - Introduction to Generative AI",
+    "Python Bootcamp - Zero to Hero",
+    "HTML for Web Development",
+    "C Programming Language"
+  ],
+  "codingProfiles": {
+    "Skillrack": "810+ programs completed",
+    "LeetCode": "20+ problems",
+    "CodeChef": "50+ problems",
+    "HackerRank": "2400+ Hackos"
+  },
+  "technicalSkills": {
+    "programmingLanguages": ["Java","C","C++","Python","SQL"],
+    "webDevelopment": ["HTML","CSS","JavaScript (basics)"],
+    "tools": ["Canva","Visual Studio Code","GitHub","Git","Power BI (Basic)"],
+    "languagesSpoken": ["English (Fluent)","Tamil (Fluent)","Telugu (Native)","Hindi (Basic)","Kannada (Basic)"]
+  }
+}

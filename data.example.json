@@ -1,0 +1,77 @@
+{
+  "name": "Your Name Here",
+  "title": "Your Job Title",
+  "headline": "Hi — I'm Your Name.",
+  "summary": "A brief one-liner about what you do. This appears in the hero section.",
+  "about": "Write 2-3 sentences about yourself. Talk about your expertise, what you love about coding, and what you're passionate about. This section should give visitors a quick sense of who you are.",
+  "contact": {
+    "email": "your.email@gmail.com",
+    "linkedin": "https://linkedin.com/in/yourprofile",
+    "github": "https://github.com/yourprofile"
+  },
+  "skills": [
+    "JavaScript",
+    "React",
+    "Node.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "HTML5",
+    "CSS3",
+    "Python",
+    "SQL",
+    "MongoDB",
+    "Git",
+    "REST APIs",
+    "Docker",
+    "AWS"
+  ],
+  "projects": [
+    {
+      "name": "Your Project Name",
+      "description": "Brief description of what this project does, the technologies used, and its impact.",
+      "link": "https://github.com/yourprofile/project-name"
+    },
+    {
+      "name": "Another Amazing Project",
+      "description": "Describe the problem you solved, how you solved it, and any key achievements.",
+      "link": "https://github.com/yourprofile/another-project"
+    },
+    {
+      "name": "Your Side Project",
+      "description": "A passion project or learning experience. Explain what you built and what you learned.",
+      "link": "https://your-deployed-site.com"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Your Current Job Title",
+      "company": "Company Name",
+      "period": "2024 — Present",
+      "details": "Describe what you do: projects you lead, technologies you use, impact you've made. Be specific about achievements."
+    },
+    {
+      "role": "Previous Job Title",
+      "company": "Previous Company",
+      "period": "2022 — 2024",
+      "details": "What did you accomplish here? Any metrics, features shipped, or teams you led?"
+    },
+    {
+      "role": "Entry-Level Position",
+      "company": "First Company",
+      "period": "2021 — 2022",
+      "details": "Your first role. What skills did you learn? What projects did you contribute to?"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "Your University Name",
+      "year": "2021"
+    },
+    {
+      "degree": "Relevant Certification or Bootcamp",
+      "institution": "Academy or Platform Name",
+      "year": "2021"
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title id="pageTitle">Contact — Karthik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+      @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+      .fade-up { animation: fadeInUp 0.8s ease-out forwards; }
+      .glass { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); }
+      body { font-family: 'Segoe UI', Trebuchet MS, sans-serif; }
+    </style>
+  </head>
+  <body class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass border-b border-slate-700/30">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+          <a href="index.html"><span id="navName">Karthik</span></a>
+        </div>
+        <div class="hidden md:flex gap-8">
+          <a href="index.html" class="hover:text-indigo-400 transition">Home</a>
+          <a href="about.html" class="hover:text-indigo-400 transition">About</a>
+          <a href="projects.html" class="hover:text-indigo-400 transition">Projects</a>
+          <a href="experience.html" class="hover:text-indigo-400 transition">Experience</a>
+          <a href="contact.html" class="text-indigo-400 font-semibold">Contact</a>
+        </div>
+        <button id="mobileMenuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-slate-950/95 z-40 hidden flex flex-col items-center justify-center gap-6 pt-20 md:hidden">
+      <a href="index.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">Home</a>
+      <a href="about.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">About</a>
+      <a href="projects.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">Projects</a>
+      <a href="experience.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">Experience</a>
+      <a href="contact.html" class="text-xl text-indigo-400 font-semibold" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
+    <main class="pt-24 pb-20">
+      <!-- Contact Section -->
+      <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+          <h1 class="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent">Get In Touch</h1>
+          <p class="text-slate-300 mb-16 text-lg max-w-2xl">I'd love to hear from you! Whether you have a project in mind, a question, or just want to connect, feel free to reach out.</p>
+          
+          <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <!-- Email Card -->
+            <div class="glass rounded-2xl p-8 text-center fade-up hover:border-indigo-500/50 transition">
+              <div class="w-16 h-16 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-envelope text-3xl text-indigo-400"></i>
+              </div>
+              <h3 class="text-xl font-bold text-indigo-300 mb-2">Email</h3>
+              <p class="text-slate-400 mb-4">Reach out via email for project inquiries</p>
+              <a id="emailLink" href="mailto:hello@example.com" class="text-indigo-400 hover:text-indigo-300 font-semibold transition">hello@example.com</a>
+            </div>
+
+            <!-- LinkedIn Card -->
+            <div class="glass rounded-2xl p-8 text-center fade-up hover:border-indigo-500/50 transition">
+              <div class="w-16 h-16 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fab fa-linkedin text-3xl text-indigo-400"></i>
+              </div>
+              <h3 class="text-xl font-bold text-indigo-300 mb-2">LinkedIn</h3>
+              <p class="text-slate-400 mb-4">Connect with me on LinkedIn</p>
+              <a id="linkedinLink" href="https://www.linkedin.com/in/karthik27b/" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-semibold transition">karthik27b</a>
+            </div>
+
+            <!-- GitHub Card -->
+            <div class="glass rounded-2xl p-8 text-center fade-up hover:border-indigo-500/50 transition">
+              <div class="w-16 h-16 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fab fa-github text-3xl text-indigo-400"></i>
+              </div>
+              <h3 class="text-xl font-bold text-indigo-300 mb-2">GitHub</h3>
+              <p class="text-slate-400 mb-4">Check out my code and projects</p>
+              <a id="githubLink" href="https://github.com/karthik2726" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-semibold transition">karthik2726</a>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="glass rounded-2xl p-8 md:p-12 max-w-2xl mx-auto fade-up">
+            <h2 class="text-3xl font-bold mb-8 text-indigo-300">Send Me a Message</h2>
+            <form id="contactForm" class="space-y-6">
+              <div>
+                <label class="block text-slate-300 font-semibold mb-2">Name</label>
+                <input type="text" name="name" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" placeholder="Your name">
+              </div>
+              <div>
+                <label class="block text-slate-300 font-semibold mb-2">Email</label>
+                <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" placeholder="your@email.com">
+              </div>
+              <div>
+                <label class="block text-slate-300 font-semibold mb-2">Subject</label>
+                <input type="text" name="subject" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" placeholder="What's this about?">
+              </div>
+              <div>
+                <label class="block text-slate-300 font-semibold mb-2">Message</label>
+                <textarea name="message" rows="5" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition resize-none" placeholder="Your message..."></textarea>
+              </div>
+              <button type="submit" class="w-full px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition transform hover:scale-105">
+                <i class="fas fa-paper-plane mr-2"></i>Send Message
+              </button>
+            </form>
+            <p class="text-slate-400 text-sm mt-6 text-center">Or reach out directly on LinkedIn or GitHub for faster response!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="py-20 px-6 relative">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl -z-0"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+          <div class="glass rounded-2xl p-12">
+            <h2 class="text-4xl font-bold mb-6 text-indigo-300">Let's Create Something Amazing</h2>
+            <p class="text-slate-300 mb-8 text-lg">I'm always interested in hearing about new projects and opportunities.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+              <a href="index.html" class="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition">
+                <i class="fas fa-home mr-2"></i>Back to Home
+              </a>
+              <a href="mailto:hello@example.com" class="px-8 py-3 border border-indigo-400 rounded-lg font-semibold hover:bg-indigo-400/10 transition">
+                <i class="fas fa-envelope mr-2"></i>Email Me
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-slate-700/30 text-center text-slate-400">
+      <p>&copy; 2025 <span id="footerName">Karthik</span>. Built with passion and Tailwind CSS.</p>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+      }
+      function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.add('hidden');
+      }
+      document.getElementById('mobileMenuBtn')?.addEventListener('click', toggleMobileMenu);
+
+      async function loadData() {
+        try {
+          const res = await fetch('data.json');
+          if (!res.ok) throw new Error('data.json not found');
+          const data = await res.json();
+          
+          ['navName', 'footerName'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el && id !== 'navName') el.textContent = data.name;
+          });
+          
+          document.getElementById('emailLink').href = 'mailto:' + data.contact.email;
+          document.getElementById('emailLink').textContent = data.contact.email;
+          document.getElementById('linkedinLink').href = data.contact.linkedin;
+          document.getElementById('githubLink').href = data.contact.github;
+        } catch (err) {
+          console.warn('Could not load data.json', err);
+        }
+      }
+      
+      window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+          nav.classList.add('bg-slate-950/80');
+        } else {
+          nav.classList.remove('bg-slate-950/80');
+        }
+      });
+      
+      // Form submission
+      document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const mailto = `mailto:hello@example.com?subject=${encodeURIComponent(formData.get('subject'))}&body=${encodeURIComponent(`From: ${formData.get('name')} (${formData.get('email')})\n\n${formData.get('message')}`)}`;
+        window.location.href = mailto;
+      });
+      
+      document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+  </body>
+</html>

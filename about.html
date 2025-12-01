@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title id="pageTitle">About — Karthik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+      @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+      .fade-up { animation: fadeInUp 0.8s ease-out forwards; }
+      .glass { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); }
+      body { font-family: 'Segoe UI', Trebuchet MS, sans-serif; }
+    </style>
+  </head>
+  <body class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass border-b border-slate-700/30">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+          <a href="index.html"><span id="navName">Karthik</span></a>
+        </div>
+        <div class="hidden md:flex gap-8">
+          <a href="index.html" class="hover:text-indigo-400 transition">Home</a>
+          <a href="about.html" class="text-indigo-400 font-semibold">About</a>
+          <a href="projects.html" class="hover:text-indigo-400 transition">Projects</a>
+          <a href="experience.html" class="hover:text-indigo-400 transition">Experience</a>
+          <a href="contact.html" class="hover:text-indigo-400 transition">Contact</a>
+        </div>
+        <button id="mobileMenuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-slate-950/95 z-40 hidden flex flex-col items-center justify-center gap-6 pt-20 md:hidden">
+      <a href="index.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">Home</a>
+      <a href="about.html" class="text-xl text-indigo-400 font-semibold" onclick="closeMobileMenu()">About</a>
+      <a href="projects.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">Projects</a>
+      <a href="experience.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">Experience</a>
+      <a href="contact.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
+    <main class="pt-24">
+      <!-- About Section -->
+      <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+          <h1 class="text-5xl md:text-6xl font-bold mb-12 bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent">About Me</h1>
+          
+          <div class="grid md:grid-cols-2 gap-12 items-start mb-16">
+            <div class="fade-up space-y-6">
+              <div class="glass rounded-2xl p-8">
+                <img id="avatarImg" src="assets/avatar.jpg" alt="Karthik" class="w-full h-96 object-cover rounded-xl shadow-2xl shadow-indigo-500/50 mb-6" />
+                <p id="bioText" class="text-slate-300 text-lg leading-relaxed">
+                  Hi! I'm Karthik, a passionate full-stack developer with a keen eye for creating elegant, performant web experiences. I love turning ideas into reality through clean code and user-centric design.
+                </p>
+              </div>
+            </div>
+
+            <div class="fade-up space-y-8">
+              <div class="glass rounded-2xl p-8">
+                <h2 class="text-3xl font-bold mb-6 text-indigo-300">About Me</h2>
+                <p id="aboutText" class="text-slate-300 leading-relaxed mb-4">
+                  I'm a full-stack developer with expertise in building scalable applications, APIs, and engaging user interfaces. I focus on clean code, performance optimization, and creating seamless user experiences.
+                </p>
+                <p class="text-slate-400">
+                  When I'm not coding, I'm exploring new technologies, contributing to open-source projects, and always learning something new.
+                </p>
+              </div>
+
+              <div class="glass rounded-2xl p-8">
+                <h3 class="text-2xl font-bold mb-6 text-indigo-300">Tech Stack</h3>
+                <div id="skillsList" class="flex flex-wrap gap-3"></div>
+              </div>
+
+              <div class="glass rounded-2xl p-8">
+                <h3 class="text-2xl font-bold mb-6 text-indigo-300">Interests</h3>
+                <div class="space-y-2">
+                  <p class="text-slate-300">💻 Full-Stack Web Development</p>
+                  <p class="text-slate-300">🚀 Open Source Contributions</p>
+                  <p class="text-slate-300">🎯 Clean Code & Best Practices</p>
+                  <p class="text-slate-300">📚 Continuous Learning</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-8 fade-up">
+            <h2 class="text-3xl font-bold mb-8 text-indigo-300">Why Work With Me?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="border-l-4 border-indigo-500 pl-6">
+                <h4 class="text-xl font-bold text-indigo-300 mb-2">Expertise</h4>
+                <p class="text-slate-400">5+ years of experience building web applications with modern technologies</p>
+              </div>
+              <div class="border-l-4 border-purple-500 pl-6">
+                <h4 class="text-xl font-bold text-purple-300 mb-2">Quality</h4>
+                <p class="text-slate-400">Committed to delivering clean, maintainable, and efficient code</p>
+              </div>
+              <div class="border-l-4 border-pink-500 pl-6">
+                <h4 class="text-xl font-bold text-pink-300 mb-2">Communication</h4>
+                <p class="text-slate-400">Strong communicator who ensures your vision is understood and delivered</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-slate-700/30 text-center text-slate-400">
+      <p>&copy; 2025 <span id="footerName">Karthik</span>. Built with passion and Tailwind CSS.</p>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+      }
+      function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.add('hidden');
+      }
+      document.getElementById('mobileMenuBtn')?.addEventListener('click', toggleMobileMenu);
+
+      async function loadData() {
+        try {
+          const res = await fetch('data.json');
+          if (!res.ok) throw new Error('data.json not found');
+          const data = await res.json();
+          
+          ['navName', 'footerName'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el && id !== 'navName') el.textContent = data.name;
+          });
+          document.getElementById('aboutText').textContent = data.about;
+          document.getElementById('bioText').textContent = data.summary;
+          
+          const skillsList = document.getElementById('skillsList');
+          skillsList.innerHTML = '';
+          (data.skills || []).forEach((skill, idx) => {
+            const span = document.createElement('span');
+            span.className = 'skill-pill inline-block bg-indigo-500/20 text-indigo-200 px-4 py-2 rounded-full text-sm font-medium hover:bg-indigo-500/40 transition cursor-default';
+            span.textContent = skill;
+            skillsList.appendChild(span);
+          });
+        } catch (err) {
+          console.warn('Could not load data.json', err);
+        }
+      }
+      
+      window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+          nav.classList.add('bg-slate-950/80');
+        } else {
+          nav.classList.remove('bg-slate-950/80');
+        }
+      });
+      
+      document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+  </body>
+</html>

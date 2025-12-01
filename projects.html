@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title id="pageTitle">Projects — Karthik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+      @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+      .fade-up { animation: fadeInUp 0.8s ease-out forwards; }
+      .project-card { transition: all 0.3s ease; }
+      .project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15); }
+      .glass { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); }
+      body { font-family: 'Segoe UI', Trebuchet MS, sans-serif; }
+    </style>
+  </head>
+  <body class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass border-b border-slate-700/30">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+          <a href="index.html"><span id="navName">Karthik</span></a>
+        </div>
+        <div class="hidden md:flex gap-8">
+          <a href="index.html" class="hover:text-indigo-400 transition">Home</a>
+          <a href="about.html" class="hover:text-indigo-400 transition">About</a>
+          <a href="projects.html" class="text-indigo-400 font-semibold">Projects</a>
+          <a href="experience.html" class="hover:text-indigo-400 transition">Experience</a>
+          <a href="contact.html" class="hover:text-indigo-400 transition">Contact</a>
+        </div>
+        <button id="mobileMenuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-slate-950/95 z-40 hidden flex flex-col items-center justify-center gap-6 pt-20 md:hidden">
+      <a href="index.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">Home</a>
+      <a href="about.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">About</a>
+      <a href="projects.html" class="text-xl text-indigo-400 font-semibold" onclick="closeMobileMenu()">Projects</a>
+      <a href="experience.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">Experience</a>
+      <a href="contact.html" class="text-xl hover:text-indigo-400 transition" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
+    <main class="pt-24">
+      <!-- Projects Section -->
+      <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+          <h1 class="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent">My Projects</h1>
+          <p class="text-slate-300 mb-12 text-lg max-w-2xl">Showcase of projects I've built, ranging from full-stack applications to specialized tools. Each project represents my commitment to quality and innovation.</p>
+          
+          <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-indigo-300">Featured Projects</h2>
+            <div id="projectsGrid" class="flex flex-col gap-8"></div>
+          </div>
+
+          <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-purple-300">Open Source & Learning Projects</h2>
+            <div id="learningProjectsGrid" class="grid md:grid-cols-2 gap-6"></div>
+          </div>
+
+          <div class="glass rounded-2xl p-8 fade-up text-center">
+            <h3 class="text-2xl font-bold mb-4 text-indigo-300">Want to see more?</h3>
+            <p class="text-slate-300 mb-6">Check out my GitHub profile for more projects and contributions!</p>
+            <a href="https://github.com/karthik2726" target="_blank" class="inline-block px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition">
+              <i class="fab fa-github mr-2"></i>Visit GitHub
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-slate-700/30 text-center text-slate-400">
+      <p>&copy; 2025 <span id="footerName">Karthik</span>. Built with passion and Tailwind CSS.</p>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+      }
+      function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.add('hidden');
+      }
+      document.getElementById('mobileMenuBtn')?.addEventListener('click', toggleMobileMenu);
+
+      async function loadData() {
+        try {
+          const res = await fetch('data.json');
+          if (!res.ok) throw new Error('data.json not found');
+          const data = await res.json();
+          
+          ['navName', 'footerName'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el && id !== 'navName') el.textContent = data.name;
+          });
+          
+          // Render projects
+          const projectsGrid = document.getElementById('projectsGrid');
+          projectsGrid.innerHTML = '';
+          (data.projects || []).forEach((p, idx) => {
+            const el = document.createElement('div');
+            el.className = 'project-card glass rounded-xl p-6 hover:shadow-2xl hover:shadow-indigo-500/20 fade-up';
+            el.style.animationDelay = `${idx * 0.1}s`;
+            el.style.display = 'block';
+            el.style.marginBottom = '24px';
+            el.innerHTML = `
+              <h3 class="text-xl font-semibold text-indigo-300 mb-2">${p.name}</h3>
+              <p class="text-slate-400 mb-3 text-sm">${p.description}</p>
+              ${p.tech ? `<p class="text-slate-500 text-xs mb-4">Tech: ${p.tech}</p>` : ''}
+              <div class="flex gap-3">
+                ${p.link && p.link !== '#' ? `<a href="${p.link}" target="_blank" class="inline-block text-indigo-400 hover:text-indigo-300 font-medium transition"><i class="fas fa-external-link mr-1"></i>View</a>` : ''}
+                ${p.github && p.github !== '#' ? `<a href="${p.github}" target="_blank" class="inline-block text-indigo-400 hover:text-indigo-300 font-medium transition"><i class="fab fa-github mr-1"></i>Code</a>` : ''}
+              </div>
+            `;
+            projectsGrid.appendChild(el);
+          });
+
+          // Render learning projects
+          const learningGrid = document.getElementById('learningProjectsGrid');
+          learningGrid.innerHTML = '';
+          (data.learningProjects || []).forEach((p, idx) => {
+            const el = document.createElement('div');
+            el.className = 'project-card glass rounded-xl p-6 hover:shadow-2xl hover:shadow-purple-500/20';
+            el.style.animationDelay = `${idx * 0.1}s`;
+            el.innerHTML = `
+              <h3 class="text-xl font-semibold text-purple-300 mb-2">${p.name}</h3>
+              <p class="text-slate-400 mb-3 text-sm">${p.description}</p>
+              ${p.tech ? `<p class="text-slate-500 text-xs mb-4">Tech: ${p.tech}</p>` : ''}
+              <div class="flex gap-3">
+                ${p.link ? `<a href="${p.link}" target="_blank" class="inline-block text-purple-400 hover:text-purple-300 font-medium transition"><i class="fas fa-external-link mr-1"></i>View</a>` : ''}
+                ${p.github ? `<a href="${p.github}" target="_blank" class="inline-block text-purple-400 hover:text-purple-300 font-medium transition"><i class="fab fa-github mr-1"></i>Code</a>` : ''}
+              </div>
+            `;
+            learningGrid.appendChild(el);
+          });
+        } catch (err) {
+          console.warn('Could not load data.json', err);
+        }
+      }
+      
+      window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+          nav.classList.add('bg-slate-950/80');
+        } else {
+          nav.classList.remove('bg-slate-950/80');
+        }
+      });
+      
+      document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+  </body>
+</html>
