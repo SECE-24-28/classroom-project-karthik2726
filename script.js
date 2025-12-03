@@ -338,6 +338,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
+      // Debug banner to display resolved Chatbase ID values
+      (function addChatDebugBanner(){
+        try {
+          if (document.getElementById('chatDebugBanner')) return;
+          const banner = document.createElement('div');
+          banner.id = 'chatDebugBanner';
+          banner.style.position = 'fixed';
+          banner.style.top = '16px';
+          banner.style.right = '16px';
+          banner.style.zIndex = '99999';
+          banner.style.background = 'rgba(15,23,42,0.85)';
+          banner.style.color = '#E6EEF8';
+          banner.style.padding = '10px 12px';
+          banner.style.borderRadius = '8px';
+          banner.style.fontSize = '12px';
+          banner.style.boxShadow = '0 8px 20px rgba(2,6,23,0.6)';
+          banner.style.maxWidth = '320px';
+          banner.style.fontFamily = "Segoe UI, Roboto, Arial, sans-serif";
+          banner.style.lineHeight = '1.2';
+
+          const close = document.createElement('button');
+          close.innerHTML = '\u2715';
+          close.title = 'Close debug banner';
+          close.style.float = 'right';
+          close.style.marginLeft = '8px';
+          close.style.background = 'transparent';
+          close.style.border = 'none';
+          close.style.color = '#cbd5e1';
+          close.style.cursor = 'pointer';
+          close.onclick = () => banner.remove();
+
+          const header = document.createElement('div');
+          header.style.display = 'flex';
+          header.style.justifyContent = 'space-between';
+          header.style.alignItems = 'center';
+          const h = document.createElement('div');
+          h.textContent = 'Chatbase Debug';
+          h.style.fontWeight = '600';
+          h.style.marginRight = '8px';
+          header.appendChild(h);
+          header.appendChild(close);
+
+          const body = document.createElement('div');
+          body.style.marginTop = '6px';
+
+          // Read meta tags
+          const metaChatbot = document.querySelector('meta[name="chatbase-chatbot-id"]')?.getAttribute('content') || '';
+          const metaBot = document.querySelector('meta[name="chatbase-bot-id"]')?.getAttribute('content') || '';
+          const metaAgent = document.querySelector('meta[name="chatbase-agent-id"]')?.getAttribute('content') || '';
+
+          // Read JSON config script
+          let jsonCfg = {};
+          try {
+            const cfgEl = document.getElementById('chatbase-config');
+            if (cfgEl) jsonCfg = JSON.parse(cfgEl.textContent || '{}');
+          } catch (e) { jsonCfg = {}; }
+
+          // Read globals
+          const globalCfg = window.embeddedChatbotConfig || {};
+          const globalBot = window.chatbotId || window.botId || window.agentId || '';
+
+          const rows = [
+            ['meta(chatbotId)', metaChatbot],
+            ['meta(botId)', metaBot],
+            ['meta(agentId)', metaAgent],
+            ['json.chatbotId', jsonCfg.chatbotId || ''],
+            ['json.botId', jsonCfg.botId || ''],
+            ['json.agentId', jsonCfg.agentId || ''],
+            ['window.embeddedChatbotConfig', JSON.stringify(globalCfg)],
+            ['window.chatbotId/botId/agentId', globalBot]
+          ];
+
+          rows.forEach(([k,v]) => {
+            const line = document.createElement('div');
+            line.style.marginTop = '4px';
+            line.innerHTML = `<strong style="color:#93C5FD">${k}:</strong> <span style="color:#E6EEF8">${v || '<empty>'}</span>`;
+            body.appendChild(line);
+          });
+
+          banner.appendChild(header);
+          banner.appendChild(body);
+          document.body.appendChild(banner);
+        } catch (e) {
+          console.error('Failed to create chat debug banner', e);
+        }
+      })();
+
 });
 async function resolveResumeAsset() {
   const embed = document.getElementById('resumeEmbed');
