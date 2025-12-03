@@ -245,6 +245,99 @@ document.addEventListener('DOMContentLoaded', () => {
     tryNext();
   })();
 
+  // Create a floating chat button and panel (site-wide)
+  (function createFloatingChat() {
+    try {
+      // Don't create twice
+      if (document.getElementById('floatingChatBtn')) return;
+
+      const btn = document.createElement('button');
+      btn.id = 'floatingChatBtn';
+      btn.title = 'Chat with me';
+      btn.className = 'fixed bottom-6 right-6 z-60 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-4 shadow-lg flex items-center justify-center';
+      btn.style.width = '56px';
+      btn.style.height = '56px';
+      btn.style.border = 'none';
+      btn.innerHTML = '<i class="fas fa-comment-alt" style="font-size:18px"></i>';
+
+      const panel = document.createElement('div');
+      panel.id = 'floatingChatPanel';
+      panel.className = 'fixed bottom-20 right-6 z-60 w-80 md:w-96 h-[520px] bg-slate-900/95 rounded-xl border border-slate-700/30 shadow-xl hidden flex flex-col overflow-hidden';
+      panel.style.backdropFilter = 'blur(6px)';
+
+      // Header
+      const header = document.createElement('div');
+      header.className = 'flex items-center justify-between px-4 py-2 border-b border-slate-700/20';
+      const title = document.createElement('div');
+      title.className = 'text-sm font-semibold text-indigo-300';
+      title.textContent = 'Chat Assistant';
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'text-slate-300 hover:text-white';
+      closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+      closeBtn.onclick = () => { panel.classList.add('hidden'); };
+      header.appendChild(title);
+      header.appendChild(closeBtn);
+
+      // Content container for iframe or widget
+      const content = document.createElement('div');
+      content.id = 'floatingChatIframeContainer';
+      content.className = 'flex-1 bg-transparent';
+      content.style.minHeight = '0';
+
+      panel.appendChild(header);
+      panel.appendChild(content);
+
+      // Append to body
+      document.body.appendChild(panel);
+      document.body.appendChild(btn);
+
+      let floatingLoaded = false;
+
+      function buildChatSrc() {
+        const id = encodeURIComponent(window.embeddedChatbotConfig?.chatbotId || window.chatbotId || '');
+        const params = new URLSearchParams();
+        if (id) {
+          params.set('chatbotId', id);
+          params.set('botId', id);
+          params.set('agentId', id);
+          params.set('id', id);
+        }
+        return `https://www.chatbase.co/chat?${params.toString()}`;
+      }
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (panel.classList.contains('hidden')) {
+          panel.classList.remove('hidden');
+          // Lazy-load iframe only once
+          if (!floatingLoaded) {
+            const iframe = document.createElement('iframe');
+            iframe.style.border = 'none';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.display = 'block';
+            iframe.style.borderRadius = '8px';
+            iframe.setAttribute('aria-label', 'Chat assistant');
+            iframe.src = buildChatSrc();
+            // Add small timeout in case Chatbase needs query params set globally
+            content.appendChild(iframe);
+            floatingLoaded = true;
+          }
+        } else {
+          panel.classList.add('hidden');
+        }
+      });
+
+      // Close on ESC
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape') panel.classList.add('hidden');
+      });
+
+    } catch (e) {
+      console.error('Failed creating floating chat UI', e);
+    }
+  })();
+
 });
 async function resolveResumeAsset() {
   const embed = document.getElementById('resumeEmbed');
