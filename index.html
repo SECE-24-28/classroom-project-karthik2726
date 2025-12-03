@@ -6,7 +6,7 @@
     <title id="pageTitle">Karthik — Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <meta name="description" content="Portfolio website for Karthik. Full-Stack Developer." />
+    <meta name="description" content="Portfolio website for Karthik. B.Tech AI & DS student." />
     <style>
       @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
       @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -56,9 +56,9 @@
             <h1 id="heroName" class="text-5xl md:text-7xl font-bold bg-gradient-to-r from-indigo-300 via-purple-300 to-indigo-300 bg-clip-text text-transparent">
               Karthik
             </h1>
-            <p id="heroTitle" class="text-2xl md:text-3xl text-slate-300 font-light">Full-Stack Developer</p>
+            <p id="heroTitle" class="text-2xl md:text-3xl text-slate-300 font-light">AI & Data Science Student</p>
             <p id="heroSummary" class="text-lg text-slate-400 max-w-xl leading-relaxed">
-              Building elegant, performant web experiences. Passionate about clean code and user-centric design.
+              B.Tech student learning applied AI/ML and software development. Building projects and prototypes as part of coursework and hackathons.
             </p>
             <div class="flex gap-4 pt-4">
               <button id="viewResumeImageBtn" class="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/50 transition transform hover:scale-105">
@@ -202,10 +202,18 @@
 
     <!-- Chatbase Widget Script - Multiple CDN fallback with Iframe -->
     <script>
+      // Provide the trained chatbot ID using multiple common keys to improve compatibility
       window.embeddedChatbotConfig = {
         chatbotId: "E6STcuZmzvVkcTWQDwNLu",
+        botId: "E6STcuZmzvVkcTWQDwNLu",
+        agentId: "E6STcuZmzvVkcTWQDwNLu",
         domain: "www.chatbase.co"
       };
+
+      // Also set some global aliases that different widget versions may check
+      window.chatbotId = window.embeddedChatbotConfig.chatbotId;
+      window.botId = window.embeddedChatbotConfig.botId;
+      window.agentId = window.embeddedChatbotConfig.agentId;
       
       var chatbaseLoaded = false;
       
@@ -262,9 +270,22 @@
       function loadChatbaseIframe() {
         console.log('Loading Chatbase iframe fallback');
         var container = document.getElementById('chatbaseWidget');
-        if (container && container.children.length === 0) {
-          container.innerHTML = '<iframe src="https://www.chatbase.co/chat?chatbotId=E6STcuZmzvVkcTWQDwNLu" width="100%" height="100%" style="border: none; border-radius: 12px;"></iframe>';
-        }
+          if (container && container.children.length === 0) {
+            // Build iframe src with multiple query params to support different Chatbase URL formats
+            const id = encodeURIComponent(window.embeddedChatbotConfig?.chatbotId || '');
+            const params = new URLSearchParams();
+            if (id) {
+              params.set('chatbotId', id);
+              params.set('botId', id);
+              params.set('agentId', id);
+              params.set('id', id);
+            }
+            const src = `https://www.chatbase.co/chat?${params.toString()}`;
+            container.innerHTML = `<iframe src="${src}" width="100%" height="100%" style="border: none; border-radius: 12px;"></iframe>`;
+            // Add dataset attributes on container for any script that inspects DOM
+            container.dataset.chatbotId = window.embeddedChatbotConfig?.chatbotId || '';
+            container.dataset.botId = window.embeddedChatbotConfig?.botId || '';
+            container.dataset.agentId = window.embeddedChatbotConfig?.agentId || '';
       }
       
       // Start initialization when document is ready
